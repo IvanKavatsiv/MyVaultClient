@@ -3,7 +3,7 @@ package com.kaiv.vault.model;
 import lombok.Data;
 
 @Data
-public class MySecrets {
+public class MySecret {
     private String username;
     private String password;
 }

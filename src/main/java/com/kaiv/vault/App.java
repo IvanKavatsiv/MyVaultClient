@@ -1,6 +1,6 @@
 package com.kaiv.vault;
 
-import com.kaiv.vault.model.MySecrets;
+import com.kaiv.vault.model.MySecret;
 import com.kaiv.vault.service.VaultSecretService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -20,14 +20,14 @@ public class App implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-        MySecrets secrets = new MySecrets();
+        MySecret secrets = new MySecret();
         secrets.setUsername("MyUsername");
         secrets.setPassword("MyPassword");
         String path = "myapp/config";
 
         vaultSecretService.saveSecret(path, secrets);
 
-        MySecrets secretsResponse = vaultSecretService.readSecret(path);
+        MySecret secretsResponse = vaultSecretService.readSecret(path);
         System.out.println(secretsResponse);
 
     }
