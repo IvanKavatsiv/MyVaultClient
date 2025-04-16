@@ -4,15 +4,11 @@ import com.kaiv.vault.model.MySecret;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.vault.core.VaultKeyValueOperations;
-import org.springframework.vault.core.VaultKeyValueOperationsSupport;
-import org.springframework.vault.core.VaultTemplate;
 import org.springframework.vault.support.VaultResponseSupport;
 
 @Service
 @RequiredArgsConstructor
 public class VaultSecretService {
-
-    private final VaultTemplate vaultTemplate;
 
     private final VaultKeyValueOperations kvOperations;
 
