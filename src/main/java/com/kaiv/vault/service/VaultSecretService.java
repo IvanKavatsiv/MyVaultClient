@@ -14,15 +14,14 @@ public class VaultSecretService {
 
     private final VaultTemplate vaultTemplate;
 
-    public void saveSecret(String path, MySecret secrets) {
+    private final VaultKeyValueOperations kvOperations;
 
-        VaultKeyValueOperations kvOps = vaultTemplate.opsForKeyValue("secret", VaultKeyValueOperationsSupport.KeyValueBackend.KV_2);
-        kvOps.put(path, secrets);
+    public void saveSecret(String path, MySecret secrets) {
+        kvOperations.put(path, secrets);
     }
 
     public MySecret readSecret(String path) {
 
-        VaultKeyValueOperations kvOperations = vaultTemplate.opsForKeyValue("secret", VaultKeyValueOperationsSupport.KeyValueBackend.KV_2);
         VaultResponseSupport<MySecret> response = kvOperations.get(path, MySecret.class);
 
         if (response != null) {
